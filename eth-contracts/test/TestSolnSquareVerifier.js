@@ -75,12 +75,7 @@ console.log("address account 2  "+accounts[1]);
         
    		   }
    		   catch(e) {
-		     
-                    let owner2 = await contract._owner.call({ from: account2 });
-                    let test2 = await contract._isOwner.call({ from: account1 });
-                    console.log(`owner is  ${owner2}        ${test2}`);  	
-                    console.log(e);
-  	 	     
+                    console.log(e);     
    	   }
 
             assert.equal(result, true);

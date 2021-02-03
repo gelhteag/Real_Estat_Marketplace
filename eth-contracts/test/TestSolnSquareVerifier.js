@@ -49,25 +49,7 @@ console.log("address account 2  "+accounts[1]);
     }
     assert.equal(result, false);
   });
-/*
-  // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
-  it("should be able to mint new token after solution has been submitted", async() => {
-    let result = false;
-    try {
-      await contract.addSolution(...Object.values(zokratesProof.proof), zokratesProof.inputs, account2, tokenId[2], { from: account1 });
-      //await contract._transferOwnership(account1, { from: account1 })
 
-      await contract.minT.call(account2, tokenId[2], { from: account1 });
-
-
-      result = true
-    } catch(e) {
-      console.log(e);
-      result = false;
-    }
-    assert.equal(result, true);
-  });
-  */
   describe('Test if an ERC721 token can be minted for contract - SolnSquareVerifier', function () {
         beforeEach(async function () { 
              let VerifierContract = await Verifier.new({from: account1});

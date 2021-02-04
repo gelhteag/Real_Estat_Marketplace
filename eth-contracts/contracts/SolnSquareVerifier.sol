@@ -6,13 +6,13 @@ import "./Verifier.sol";
 
 
 // Define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-contract SolnSquareVerifier  {
+contract SolnSquareVerifier is ERC721MintableComplete {
   Verifier private verifierContract;
-  ERC721MintableComplete private erc721MintableComplete;
+  //ERC721MintableComplete private erc721MintableComplete;
 
-  constructor(address verifierAddress, address erc721address) public {
+  constructor(address verifierAddress) ERC721MintableComplete("DAHOUSE", "DAO")  public {
     verifierContract = Verifier(verifierAddress);
-    erc721MintableComplete = ERC721MintableComplete(erc721address);
+    //erc721MintableComplete = ERC721MintableComplete(erc721address);
   }
 
   // Define a solutions struct that can hold an index & an address
@@ -75,7 +75,7 @@ contract SolnSquareVerifier  {
 
   function _transferOwnership(address newOwner) public {
         
-        erc721MintableComplete.transferOwnership(newOwner);
+        super.transferOwnership(newOwner);
     }
   // Create a function to add the solutions to the array and emit the event
   function addSolution 
@@ -111,27 +111,28 @@ contract SolnSquareVerifier  {
   //  - make sure you handle metadata as well as token supply
   function _owner() public returns(address)
   	{
-  		return erc721MintableComplete.owner();
+  		return super.owner();
   	}
   function _isOwner() public returns(address, address, bool)
   	{
-  		return erc721MintableComplete.isOwner();
+  		return super.isOwner();
   	}   	
   function minT
   		(
   		 address to,
   		 uint256 tokenId
-  		) 
+  		)
+  		 
   		 public 
   		 requireSolution(tokenId) 
   		 requireNotMinted(tokenId) 
   		 requireIsOwner(to,tokenId) 
-  		 
+  		 returns(bool) 
   		 		 
   	{
-   
-            erc721MintableComplete.mint(to, tokenId);
-  	    solution[solutionSubmitted[tokenId]].minted = true;
+           
+            super.mint(to, tokenId);
+  	    return solution[solutionSubmitted[tokenId]].minted = true;
   	}
 } 
 

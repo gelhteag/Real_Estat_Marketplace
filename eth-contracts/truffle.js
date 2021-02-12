@@ -2,7 +2,7 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const infuraKey = "<Infura PROJECT ID>";
 //
 // const fs = require('fs');
-const mnemonic = "bronze bench magnet tail pipe must claim zoo champion brand fatal bronzenote";
+const mnemonic = "tape satoshi box piano rude wave velvet north auto exact goddess liar";
 
 module.exports = {
 

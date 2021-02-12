@@ -1,7 +1,7 @@
 pragma solidity >0.4.24;
 
 // Define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
-import "./ERC721MintableComplete.sol";
+import "./ERC721Mintable.sol";
 import "./Verifier.sol";
 
 
@@ -131,8 +131,10 @@ contract SolnSquareVerifier is ERC721MintableComplete {
   		 		 
   	{
            
-            super.mint(to, tokenId);
-  	    return solution[solutionSubmitted[tokenId]].minted = true;
+            
+  	    solution[solutionSubmitted[tokenId]].minted = true;
+  	    bool minted = mint(to, tokenId);
+            return minted;
   	}
 } 
 

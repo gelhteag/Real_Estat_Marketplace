@@ -87,6 +87,8 @@ const App = {
     console.log(idT);
     await tokenURI(idT).call({from: this.account}).then(result =>{console.log(result)});
     
+    console.log(this.meta.methods[0]);
+    
   }
   
   

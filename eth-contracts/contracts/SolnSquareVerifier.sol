@@ -8,14 +8,14 @@ import "./Verifier.sol";
 // Define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 contract SolnSquareVerifier is ERC721MintableComplete {
   Verifier private verifierContract;
-  //ERC721MintableComplete private erc721MintableComplete;
+
 
   constructor(address verifierAddress) ERC721MintableComplete("DAHOUSE", "DAO")  public {
     verifierContract = Verifier(verifierAddress);
-    //erc721MintableComplete = ERC721MintableComplete(erc721address);
+
   }
 
-  // Define a solutions struct that can hold an index & an address
+
   struct Solution {
     uint256 tokenId;
     address owner;
@@ -23,13 +23,13 @@ contract SolnSquareVerifier is ERC721MintableComplete {
     bool minted;
   }
 
-  // Define an array of the above struct
+
   mapping(bytes32 => Solution) solution;
 
-  // Define a mapping to store unique solutions submitted
+
   mapping(uint256 => bytes32) private solutionSubmitted;
 
-  // Create an event to emit when a solution is added
+
   event SolutionAdded(address indexed owner, uint256 indexed tokenId , bool indexed minted);
   
   modifier requireSolutionIsverifialbe
@@ -77,7 +77,7 @@ contract SolnSquareVerifier is ERC721MintableComplete {
         
         super.transferOwnership(newOwner);
     }
-  // Create a function to add the solutions to the array and emit the event
+
   function addSolution 
   			(
   			uint[2] memory a,
@@ -106,9 +106,7 @@ contract SolnSquareVerifier is ERC721MintableComplete {
   	
   	
   
-  // Create a function to mint new NFT only after the solution has been verified
-  //  - make sure the solution is unique (has not been used before)
-  //  - make sure you handle metadata as well as token supply
+ 
   function _owner() public returns(address)
   	{
   		return super.owner();
